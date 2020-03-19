@@ -3,7 +3,7 @@
 
 const expansionCache = {};
 
-setKeyHandler ( 'space', HYPER, () => {
+setKeyHandler ( 'm', HYPER, () => {
 
   const window = Window.focused ();
 
