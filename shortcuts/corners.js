@@ -2,10 +2,10 @@
 /* CORNERS */
 
 const corners = [
-  ['q', HYPER, ['top-left']],
-  ['w', HYPER, ['top-right']],
-  ['s', HYPER, ['bottom-right']],
-  ['a', HYPER, ['bottom-left']]
+  ['/', HYPER, ['top-left']],
+  ['=', HYPER, ['top-right']],
+  ['s', HYPER, ['bottom-left']],
+  ['-', HYPER, ['bottom-right']]
 ];
 
 setKeysHandler ( setFrame, corners );
