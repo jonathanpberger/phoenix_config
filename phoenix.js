@@ -42,6 +42,7 @@ require ( './shortcuts/fullscreen.js' );
 require ( './shortcuts/info.js' );
 require ( './shortcuts/grow.js' );
 require ( './shortcuts/halves.js' );
+require ( './shortcuts/next_display.js' );
 require ( './shortcuts/pause.js' );
 require ( './shortcuts/quit.js' );
 require ( './shortcuts/reload.js' );
