@@ -1,12 +1,15 @@
 //////////////////////////// Adapted from https://gist.github.com/danshan/a2039396cfa19ec2379a19feacf05dc0
 
+var mousePositions = {}; // mouse position for window
+var activeWindowsTimes = {}; // last active time for window
+
 function setMousePositionCenterForWindow(window) {
     var pos = {
       x: window.topLeft().x + window.frame().width / 2,
       y: window.topLeft().y + window.frame().height / 2
     }
   
-    Phoenix.log(String.format('move mouse to pos for {0} x: {1}, y: {2}', window.app().name(), pos.x, pos.y));
+    // Phoenix.log(String.format('move mouse to pos for {0} x: {1}, y: {2}', window.app().name(), pos.x, pos.y));
     Mouse.move(pos);
     heartbeatWindow(window);
   }
@@ -16,12 +19,12 @@ function heartbeatWindow(window) {
   }
 
 function restoreMousePositionForWindow(window) {
+    var pos = mousePositions[window.hash()];
+    var rect = window.frame();
     if (!mousePositions[window.hash()]) {
       setMousePositionCenterForWindow(window);
       return;
     }
-    var pos = mousePositions[window.hash()];
-    var rect = window.frame();
     if (pos.x < rect.x || pos.x > (rect.x + rect.width) || pos.y < rect.y || pos.y > (rect.y + rect.height)) {
       setMousePositionCenterForWindow(window);
       return;
@@ -36,8 +39,8 @@ function moveToScreen(window, screen) {
     if (!screen) return;
   
     var frame = window.frame();
-    var oldScreenRect = window.screen().visibleFrameInRectangle();
-    var newScreenRect = screen.visibleFrameInRectangle();
+    var oldScreenRect = window.screen().flippedVisibleFrame();
+    var newScreenRect = screen.flippedVisibleFrame();
     var xRatio = newScreenRect.width / oldScreenRect.width;
     var yRatio = newScreenRect.height / oldScreenRect.height;
   
