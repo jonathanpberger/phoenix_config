@@ -1,3 +1,15 @@
+# JPB Install
+
+- `mkdir ~/.config`
+- `cd ~/.config`
+- `git clone` this repo
+
+this next bit is the key for phoenix_app to recognize the config:
+
+- `mv phoenix_config phoenix`
+
+
+---
 
 # Phoenix
 
